@@ -17,7 +17,22 @@ struct student *create_node(int data) {
   return newNode;
 }
 
-struct student *append_node(struct student **head_addr) {
+
+struct student *append_node_at_beginning(struct student **head_addr) {
+  int roll;
+  struct student *newNode, *temp;
+  printf("Enter roll no: ");
+  scanf("%d", &roll);
+  newNode = create_node(roll);
+  
+  if(*head_addr == NULL)
+    *head_addr = newNode;
+  else {
+    new_node->next = headref;
+  }
+}
+
+struct student *append_node_at_end(struct student **head_addr) {
   int roll;
   struct student *newNode, *temp;
   printf("Enter roll no: ");
@@ -50,9 +65,10 @@ int main(){
   head = NULL;
 
   int choice;
-  printf("1. Insert Node at End\n");
-  printf("2. Display\n");
-  printf("3. Exit\n");
+  printf("1. Insert Node at Beginning\n");
+  printf("2. Insert Node at End\n");
+  printf("3. Display\n");
+  printf("4. Exit\n");
   
   while(1) {
     printf("Enter your choice: ");
@@ -60,11 +76,13 @@ int main(){
     scanf("%d",&choice);
     
     switch(choice) {
-      case 1: append_node(&head);
+      case 1: append_node_at_beginning(&head);
               break;
-      case 2: display_list(head);
+      case 2: append_node_at_end(&head);
               break;
-      case 3: exit(0);
+      case 3: display_list(head);
+              break;
+      case 4: exit(0);
       default: continue;
     }
   }
